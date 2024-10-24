@@ -1,12 +1,13 @@
 
 import EditTask from "./EditTask"
+import Todo from "./Todo"
 
 function App() {
 
   return (
     <>
       <div className="main-container">
-        <EditTask />
+        <Todo />
       </div>
     </>
   )
