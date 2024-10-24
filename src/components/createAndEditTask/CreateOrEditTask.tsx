@@ -1,6 +1,6 @@
 import { useState } from "react";
 import EditTaskHeader from "./EditTaskHeader";
-import { Task } from "./Todo";
+import { Task } from "../todo/Todo";
 
 interface CreateOrEditTaskProps {
     task: Task;
@@ -11,9 +11,7 @@ interface CreateOrEditTaskProps {
 
 const CreateOrEditTask = ({ task, tasks, setTasks, setSelectedTask }: CreateOrEditTaskProps) => {
     const [taskName, setTaskName] = useState(task.text); // Prefill with task name
-
     const handleSave = () => {
-
         if (task.id) {
             // Editing an existing task
             const updatedTasks = tasks.map(eachTask =>
@@ -45,7 +43,6 @@ const CreateOrEditTask = ({ task, tasks, setTasks, setSelectedTask }: CreateOrEd
     return (
         <section className="edit-task-container">
             <EditTaskHeader isNewTask={task.id ? false : true} />
-
             <div className="edit-task-body">
                 <div className="input-group">
                     <label htmlFor="taskName">Task Name</label>
@@ -56,23 +53,21 @@ const CreateOrEditTask = ({ task, tasks, setTasks, setSelectedTask }: CreateOrEd
                         onChange={(e) => setTaskName(e.target.value)}
                     />
                 </div>
-
-                <div className="edit-task-button-container">
-                    <section>
-                        <div className="delete-button" onClick={handleSave}>
-                            <span className="delete-button__inner" />
-                            <span className="button-text-container">
-                                <p className="delete-button-text">Save</p>
-                            </span>
-                        </div>
-                        <div className="save-button" onClick={handleDelete}>
-                            <span className="save-button__inner" />
-                            <span className="button-text-container">
-                                <p className="delete-button-text">{task.id ? "Delete" : "Back"}</p>
-                            </span>
-                        </div>
-                    </section>
+            </div>
+            <div className="create-or-edit-task-button-container">
+                <div className="delete-button" onClick={handleDelete}>
+                    <span className="delete-button__inner" />
+                    <span className="button-text-container">
+                        <p className="delete-button-text">{task.id ? "Delete" : "Back"}</p>
+                    </span>
                 </div>
+                <div className="save-button" onClick={handleSave}>
+                    <span className="save-button__inner" />
+                    <span className="button-text-container">
+                        <p className="save-button-text">Save</p>
+                    </span>
+                </div>
+
             </div>
         </section>
     );

@@ -1,4 +1,6 @@
-const EditTaskHeader = ({isNewTask}:{isNewTask:boolean}) => {
+
+
+const EditTaskHeader = ({ isNewTask }: { isNewTask: boolean }) => {
     return (
         <>
             <header className="edit-task-header">

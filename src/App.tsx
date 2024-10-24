@@ -1,6 +1,6 @@
 
 
-import Todo from "./Todo"
+import Todo from "./components/todo/Todo"
 
 function App() {
 

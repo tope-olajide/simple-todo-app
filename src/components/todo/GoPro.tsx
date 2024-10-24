@@ -1,8 +1,8 @@
 
-import trophy from './assets/trophy.png';
+import trophy from './../../assets/trophy.png';
 const GoPro = () => {
     return (
-        <>
+        <> 
             <div className='go-pro-container'>
                 <div className="go-pro-content-container">
                     <div className="go-pro-content">
@@ -11,9 +11,9 @@ const GoPro = () => {
                     </div>
                 </div>
                 <div className='go-pro-price-container'> <p className='go-pro-price'>$1</p></div>
-           </div>
+            </div>
         </>
-    )
+    ) 
 }
 
 export default GoPro

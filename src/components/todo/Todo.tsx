@@ -1,9 +1,9 @@
-import checked from './assets/checked.png';
-import unchecked from './assets/unchecked.png';
+import checked from './../../assets/checked.png';
+import unchecked from './../../assets/unchecked.png';
 import Header from './Header';
 import GoPro from './GoPro';
 import { useState } from 'react';
-import EditTask from './EditTask';
+import CreateOrEditTask from '../createAndEditTask/CreateOrEditTask';
 
 export interface Task {
     id: number | null;
@@ -25,12 +25,12 @@ const Todo = () => {
         setSelectedTask(task); // Set the clicked task as the selected task
     };
     const handleNewTaskClick = () => {
-        setSelectedTask({ id:null , text: '', completed: false }); 
+        setSelectedTask({ id: null, text: '', completed: false });
         console.log(selectedTask)
     };
 
     // Function to toggle the 'completed' status
-    const toggleTaskCompleted = (taskId: number| null) => {
+    const toggleTaskCompleted = (taskId: number | null) => {
         const updatedTasks = tasks.map(task =>
             task.id === taskId ? { ...task, completed: !task.completed } : task
         );
@@ -38,9 +38,9 @@ const Todo = () => {
     };
     return (
         <>
-            {/* Conditionally render EditTask or task list based on selectedTask */}
+            {/* Conditionally render CreateOrEditTask or task list based on selectedTask */}
             {selectedTask ? (
-                <EditTask
+                <CreateOrEditTask
                     task={selectedTask}
                     tasks={tasks}
                     setTasks={setTasks}
