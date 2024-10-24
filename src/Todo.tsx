@@ -6,7 +6,7 @@ import { useState } from 'react';
 import EditTask from './EditTask';
 
 export interface Task {
-    id: number;
+    id: number | null;
     text: string;
     completed: boolean;
 }
@@ -24,13 +24,18 @@ const Todo = () => {
     const handleEditClick = (task: Task) => {
         setSelectedTask(task); // Set the clicked task as the selected task
     };
-// Function to toggle the 'completed' status
-const toggleTaskCompleted = (taskId: number) => {
-    const updatedTasks = tasks.map(task =>
-        task.id === taskId ? { ...task, completed: !task.completed } : task
-    );
-    setTasks(updatedTasks); // Update the state with the modified task list
-};
+    const handleNewTaskClick = () => {
+        setSelectedTask({ id:null , text: '', completed: false }); 
+        console.log(selectedTask)
+    };
+
+    // Function to toggle the 'completed' status
+    const toggleTaskCompleted = (taskId: number| null) => {
+        const updatedTasks = tasks.map(task =>
+            task.id === taskId ? { ...task, completed: !task.completed } : task
+        );
+        setTasks(updatedTasks); // Update the state with the modified task list
+    };
     return (
         <>
             {/* Conditionally render EditTask or task list based on selectedTask */}
@@ -55,7 +60,7 @@ const toggleTaskCompleted = (taskId: number) => {
                                     alt={task.completed ? "Checked" : "Unchecked"}
                                     onClick={() => toggleTaskCompleted(task.id)}
                                 />
-                                <span className={task.completed?"completed-task-text":"task-text"}>{task.text}</span>
+                                <span onClick={() => toggleTaskCompleted(task.id)} className={task.completed ? "completed-task-text" : "task-text"}>{task.text}</span>
                                 <button className="edit-button" onClick={() => handleEditClick(task)}>
                                     Edit
                                 </button>
@@ -63,7 +68,7 @@ const toggleTaskCompleted = (taskId: number) => {
                         ))}
                     </main>
 
-                    <div className="add-task-button">
+                    <div className="add-task-button" onClick={handleNewTaskClick}>
                         <span className="add-task-button__inner" />
                         <span className="button-text-container">
                             <p className="button-text">+</p>

@@ -1,5 +1,5 @@
 
-import EditTask from "./EditTask"
+
 import Todo from "./Todo"
 
 function App() {

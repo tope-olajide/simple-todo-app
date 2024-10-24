@@ -6,7 +6,7 @@ const GoPro = () => {
             <div className='go-pro-container'>
                 <div className="go-pro-content-container">
                     <div className="go-pro-content">
-                        <img className='' src={trophy} alt="" />
+                        <img className='trophy-image' src={trophy} alt="" />
                         <span className='go-pro-text'>Go Pro Upgrade Now</span>
                     </div>
                 </div>
